@@ -1,0 +1,134 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="hi">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Letter Joiner</title>
+	<script type="text/javascript" src= "jquery.min.js"></script>
+</head>
+<body>
+<div id="allJoins"></div>
+</body>
+<script type="text/javascript">
+
+//var verse = "त्र्य॑र्य॒मा मनु॑षो दे॒वता॑ता॒ त्री रो॑च॒ना दि॒व्या धा॑रयन्त। अर्च॑न्ति त्वा म॒रुत॑ पू॒तद॑क्षा॒स्त्वमे॑षा॒मृषि॑रिन्द्रासि॒ धीर॑॥";
+function syllabify(){
+	var verse;
+	var temp=0;
+	var temp1=0;
+	var temp2=0;
+	var temp3=0;
+	var temp4=0;
+	
+var verseBig = $("#verse1").val();
+// verseBig = verseBig.replace(/[१७३०४६५८९२](?![||]/g,"");
+verseBig = verseBig.replace(/[॒॑१७३०४६५८९२.]/g,"");
+verseBig = verseBig.split("|");
+verseBig = verseBig.filter(Boolean);
+//console.log(verseBig);
+for (var q = verseBig.length - 1; q >= 0; q--) {
+	verse  = verseBig[q];
+	verse = verse.split(" ");
+for (var p = verse.length - 1; p >= 0; p--) {
+	verse[p] = verse[p].replace(/[।॥॒॑१७३०४६५८९२.।॥]/g,"");
+};
+
+
+
+var re = /[ क ख ग घ ङ च छ ज झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह अ आ इ ई उ ऊ ऋ ॠ ॡ ए ऐ ओ औ ऌ ](?!्)/g ;  
+var i=0;
+var b=[];
+var c =["~"];
+var d ;
+
+for(j=0; j<verse.length;j++){
+
+while ((match = re.exec(verse[j])) != null) {
+    b[i] = match.index ;
+   
+  
+
+   
+i++;}
+
+	
+
+for (var k = 0; k <= verse[j].length-1; k++) { 
+	////console.log(b);
+	
+for (var m = b.length - 1; m >= 0; m--) {
+
+ if(k==b[m])
+	{
+		c = c + "~" ;
+
+}
+};
+
+	
+	
+	c = c + verse[j][k]; 
+//
+////console.log(c);
+}
+//c= c + "#";
+ 
+b=[];
+ //c=[];
+
+
+}
+
+
+c = c.split("~");
+
+
+// var obj = { };
+// for (var i = 0, j = c.length; i < j; i++) {
+//    if (obj[c[i]]) {
+//       obj[c[i]]++;
+//    }
+//    else {
+//       obj[c[i]] = 1;
+//    } 
+// }
+// //console.log(JSON.stringify(obj));
+
+$("#allJoins").append(c + "------------" + (c.length-2) +  "<br>") ;
+if((c.length-2)==16)
+{
+	temp++;
+}
+else if((c.length-2)==22)
+{
+	temp1++;
+}
+else if((c.length-2)==23)
+{
+	temp2++;
+}
+else temp3++;
+}
+console.log(temp+"---"+temp1+"---"+temp2+"---"+temp3);
+
+// var obj2 = { };
+// for (var i = 0, j = d.length; i < j; i++) {
+//    if (obj2[d[i]]) {
+//       obj2[d[i]]++;
+//    }
+//    else {
+//       obj2[d[i]] = 1;
+//    } 
+// }
+// //console.log(JSON.stringify(obj2));
+};
+
+
+
+
+</script>
+<input id="verse1" placeholder="enter verse here"></input>
+<input type="submit" id="Submit" onclick="syllabify()"></input>
+
+</body>
+</html>
