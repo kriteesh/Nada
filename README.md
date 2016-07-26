@@ -1,2 +1,2 @@
 # Nada
-Collection of scripts from Gna Project, relevant to Nada and Sanskrit Research. 
+Collection of scripts from Gna Project, relevant to Nada and Sanskrit Research..
