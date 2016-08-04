@@ -1,8 +1,60 @@
 <html>
 
 <head>
+
 <meta http-equiv="Content-Language" content="hi">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+#verse1{
+	position:absolute;
+	width: 400px;
+	padding : 10px;
+	border-radius: 5px;
+	outline:none;
+
+
+}
+
+
+        #Submit{
+
+        position:absolute; 
+        left : 500px;
+        background:#9ec956;
+        width: 200px; 
+
+        z-index: 1;
+        padding :10px; 
+        text-align:center;
+        cursor:pointer;
+        border-radius: 4px;
+
+        outline:none;
+
+        }
+        #Submit:hover{
+        background: #727265;
+        color: black;
+        }
+        #allJoins{
+        	
+
+
+background: #24C6DC; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #24C6DC , #514A9D); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #24C6DC , #514A9D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+        
+        	color: black;
+        	font-size : 16px;
+        	width : 70%;
+        	border-radius: 10px;
+        	padding :10px;
+        	position: absolute;
+        	top:100px;
+
+        }
+</style>
 	<title>Letter Joiner</title>
 	<script type="text/javascript" src= "jquery.min.js"></script>
 </head>
@@ -35,7 +87,7 @@ for (var p = verse.length - 1; p >= 0; p--) {
 
 
 
-var re = /[ क ख ग घ ङ च छ ज झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह अ आ इ ई उ ऊ ऋ ॠ ॡ ए ऐ ओ औ ऌ ](?!्)/g ;  
+var re = /[ क ख ग घ ङ च छ ज झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह अ आ इ ई उ ऊ ऋ ॠ ॡ ए ऐ ओ औ ऌ ळ ](?!्)/g ;  
 var i=0;
 var b=[];
 var c =["~"];
@@ -81,8 +133,6 @@ b=[];
 
 
 c = c.split("~");
-
-
 // var obj = { };
 // for (var i = 0, j = c.length; i < j; i++) {
 //    if (obj[c[i]]) {
@@ -94,18 +144,30 @@ c = c.split("~");
 // }
 // //console.log(JSON.stringify(obj));
 
-$("#allJoins").append(c + "------------" + (c.length-2) +  "<br>") ;
-if((c.length-2)==16)
+$("#allJoins").append("The syllables are " + c + "<br><br>" + "No. of syllables in this line are :" + (c.length-2) +  " .<br><br>") ;
+if((c.length-2)==24)
 {
-	temp++;
+	$("#allJoins").append("The meter is Gayatri <br><br>" + "&middot;&middot;&middot;&middot;&middot; <br><br>");
 }
-else if((c.length-2)==22)
+else if((c.length-2)==32)
 {
-	temp1++;
+	$("#allJoins").append("The meter is Anushtubh <br><br>"+ "&middot;&middot;&middot;&middot;&middot; <br><br>");
 }
-else if((c.length-2)==23)
+else if((c.length-2)==44)
 {
-	temp2++;
+	$("#allJoins").append("The meter is Tristubh<br><br>"+ "&middot;&middot;&middot;&middot;&middot; <br><br>");
+}
+else if((c.length-2)==40)
+{
+	$("#allJoins").append("The meter is Pankti<br><br>"+ "&middot;&middot;&middot;&middot;&middot; <br><br>");
+}
+else if((c.length-2)==48)
+{
+	$("#allJoins").append("The meter is Jagati<br><br>"+ "&middot;&middot;&middot;&middot;&middot; <br><br>");
+}
+else if((c.length-2)==28)
+{
+	$("#allJoins").append("The meter is Ushnih<br><br>"+ "&middot;&middot;&middot;&middot;&middot; <br><br>");
 }
 else temp3++;
 }
