@@ -5,6 +5,27 @@
 <meta http-equiv="Content-Language" content="hi">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>
+  #links{
+
+        position:absolute; 
+        left : 800px;
+        background:#e75903;
+        width: 200px; 
+
+        z-index: 1;
+        padding :10px; 
+        text-align:center;
+        cursor:pointer;
+        border-radius: 4px;
+        color :white;
+        outline:none;
+
+        }
+        #links:hover{
+        background: #727265;
+        color: black;
+        }
+
 #verse1{
 	position:absolute;
 	width: 400px;
@@ -22,7 +43,7 @@
         left : 500px;
         background:#9ec956;
         width: 200px; 
-
+        color:white;
         z-index: 1;
         padding :10px; 
         text-align:center;
@@ -37,17 +58,10 @@
         color: black;
         }
         #allJoins{
-        	
-
-
-background: #24C6DC; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #24C6DC , #514A9D); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #24C6DC , #514A9D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        
         
         	color: black;
         	font-size : 16px;
-        	width : 70%;
+        	width : auto;
         	border-radius: 10px;
         	padding :10px;
         	position: absolute;
@@ -55,7 +69,7 @@ background: linear-gradient(to left, #24C6DC , #514A9D); /* W3C, IE 10+/ Edge, F
 
         }
 </style>
-	<title>Syllable Calculator</title>
+	<title>Letter Joiner</title>
 	<script type="text/javascript" src= "jquery.min.js"></script>
 </head>
 <body>
@@ -147,27 +161,27 @@ c = c.split("~");
 $("#allJoins").append("The syllables are " + c + "<br><br>" + "No. of syllables in this line are :" + (c.length-2) +  " .<br><br>") ;
 if((c.length-2)==24)
 {
-	$("#allJoins").append("The meter is Gayatri <br><br>" + "&middot;&middot;&middot;&middot;&middot; <br><br>");
+	$("#allJoins").append("The meter is Gayatri <br>" + "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;<br><br>");
 }
 else if((c.length-2)==32)
 {
-	$("#allJoins").append("The meter is Anushtubh <br><br>"+ "&middot;&middot;&middot;&middot;&middot; <br><br>");
+	$("#allJoins").append("The meter is Anushtubh <br>"+ "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot; <br><br>");
 }
 else if((c.length-2)==44)
 {
-	$("#allJoins").append("The meter is Tristubh<br><br>"+ "&middot;&middot;&middot;&middot;&middot; <br><br>");
+	$("#allJoins").append("The meter is Tristubh<br>"+ "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot; <br><br>");
 }
 else if((c.length-2)==40)
 {
-	$("#allJoins").append("The meter is Pankti<br><br>"+ "&middot;&middot;&middot;&middot;&middot; <br><br>");
+	$("#allJoins").append("The meter is Pankti<br>"+ "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot; <br><br>");
 }
 else if((c.length-2)==48)
 {
-	$("#allJoins").append("The meter is Jagati<br><br>"+ "&middot;&middot;&middot;&middot;&middot; <br><br>");
+	$("#allJoins").append("The meter is Jagati<br>"+ "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot; <br><br>");
 }
 else if((c.length-2)==28)
 {
-	$("#allJoins").append("The meter is Ushnih<br><br>"+ "&middot;&middot;&middot;&middot;&middot; <br><br>");
+	$("#allJoins").append("The meter is Ushnih<br>"+ "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot; <br><br>");
 }
 else temp3++;
 }
@@ -190,7 +204,8 @@ console.log(temp+"---"+temp1+"---"+temp2+"---"+temp3);
 
 </script>
 <input id="verse1" placeholder="enter verse here"></input>
-<input type="submit" id="Submit" onclick="syllabify()"></input>
+<div id="Submit" onclick="syllabify()">Show me the stuff</div>
+<div id="links" href="http://www.aurobindo.ru/workings/matherials/rigveda/01/01-001.htm">Click here for verses</div>
 
 </body>
 </html>
