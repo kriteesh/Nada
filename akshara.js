@@ -1,5 +1,3 @@
-use 'strict';
-
 /**
  * Divides word into its aksharas
  * 
