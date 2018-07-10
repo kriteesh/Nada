@@ -16,7 +16,7 @@
 				}
 			/* Track */
 			::-webkit-scrollbar-track {
-				background: white; 
+				background: black; 
 			}
 
 			/* Handle */
@@ -37,7 +37,7 @@
 				width: 100%;
 				height : 100%;
 				display: grid;
-				grid-template-rows: 20vh 70vh 10vh;
+				grid-template-rows: 15vh 75vh 10vh;
 				grid-template-columns: 25vw 25vw 30vw 20vw;
 				grid-template-areas: 'header header header header'
 									 'main main main main'
@@ -49,8 +49,8 @@
 			}
 			#content{
 				grid-area: header;
-				width: 80%;
-				height : 80%;
+				width: 90%;
+				height : 60%;
 				align-self: center;
 				justify-self: center;
 				color: #ffffffa1;
@@ -61,7 +61,8 @@
 				padding: 10px;
 				letter-spacing: 1px;
 				resize:none;
-				overflow-y : scroll;	
+				overflow-y : scroll;
+				font-size : 1vw;
 			}
 			.main{
 				grid-area: main;
@@ -69,7 +70,6 @@
 				grid-template-rows: repeat(5,1fr);
 				grid-auto-flow: column;
 				grid-template-areas: 'verse' 'line' 'word' 'letter' 'qualia';
-				font-size: 1.5vw;
 				background-color: #000000f2;
 				width: 100%;
 				height: 100%;
@@ -79,6 +79,7 @@
 				user-select: none;
 				font-family: 'Rajdhani', sans-serif;
 				color: #cccccc;
+				font-size : 1.5vw;
 				
 			}
 			
@@ -90,6 +91,7 @@
 			}
 			.wordBox{
 				grid-area : word;
+				
 			}
 			.letterBox{
 				grid-area : letter;
@@ -170,6 +172,12 @@
 				font-size : 1.8vw;
 				margin : 3px;
 				border : none;
+			}
+			@media (orientation: portrait) {
+				.main{font-size : 2vh;}
+				.chyawanprash{font-size:2vh;}
+				#content{font-size : 1.5vh;}
+				.footer,.looter{bottom:20vh;}
 			}
 		</style>
 	</head>
@@ -268,7 +276,7 @@
 			pew = pew.split("|").filter(Boolean);
 			return pew; 
 		}
-		main.innerHTML = "<br><br><br><br>नमस्कार<br><br>❁ ❁ ❁ ❁<br><br>यह छन्द शास्त्र पर आधारित एक साधारण यन्त्र है<br> ऊपर के कोष में आप सुविधा अनुसार कितने भी श्लोक लिख या पेस्ट कर सकते है <br> कोष के भरने के बाद आप अक्षरित दबाये, यह आपको एक एक करके सभी श्लोकों के अक्षरों का विवरण देगा <br> श्लोकों को अर्ध विराम ( | ) और पूर्ण विराम ( || ) के मानक के अनुसार ही लिखें <br> यह सुविधा सिर्फ देवनागरी में है, शीघ्र और भाषाएँ भी सम्मिलित होंगी <br> कोष को खाली करने के लिए हटाएं दबाएं <br><br>❁ ❁ ❁ ❁ ";
+		main.innerHTML = "<br><br><br><br>नमस्कार<br><br>❁ ❁ ❁ ❁<br><br>यह छन्द शास्त्र पर आधारित एक साधारण यन्त्र है<br> ऊपर के कोष में सुविधानुसार कितने भी श्लोक लिख या पेस्ट कर सकते है <br> कोष के भरने के बाद आप अक्षरित दबाये, यह आपको एक एक करके सभी श्लोकों के अक्षरों का विवरण देगा <br> श्लोकों को अर्ध विराम ( | ) और पूर्ण विराम ( || ) के मानक के अनुसार ही लिखें <br> यह सुविधा सिर्फ देवनागरी में है, शीघ्र और भाषाएँ भी सम्मिलित होंगी <br> कोष को खाली करने के लिए हटाएं दबाएं <br><br>❁ ❁ ❁ ❁ ";
 		let p = 0;
 		let footer = document.getElementsByClassName('footer')[0];
 		footer.onclick = function (){
