@@ -1,18 +1,18 @@
 <html>
 	<head>
-		<title>Sanskrit Syllable Calculator</title>
+		<title>अक्षर ज्ञातक यन्त्र</title>
 		<meta http-equiv="Content-Language" content="hi">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="manifest" href="js/manifest.json">
 		<meta name="viewport" content="width=device-width">
 		<meta name="mobile-web-app-capable" content="yes">
-		<link rel="icon" sizes="210x175" href="assets/icon.png">
+		<link rel="icon" sizes="200x200" href="assets/icon.jpg">
 		<link href="https://fonts.googleapis.com/css?family=Rajdhani|Khand|Mukta" rel="stylesheet">
 		<script type="text/javascript" src="js/transliterate.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<style>
 			::-webkit-scrollbar {
-    			width: 7px;
+    			width: 3px;
 				}
 			/* Track */
 			::-webkit-scrollbar-track {
@@ -32,14 +32,16 @@
 				margin:0;
 				width : 100%;
 				height : 100%;
+				overflow:hidden;
 			}
 			.container{
 				width: 100%;
 				height : 100%;
 				display: grid;
-				grid-template-rows: 15vh 75vh 10vh;
+				grid-template-rows: 8vh 16vh 68vh 8vh;
 				grid-template-columns: 25vw 25vw 30vw 20vw;
-				grid-template-areas: 'header header header header'
+				grid-template-areas: 'topka topka topka topka'
+									'header header header header'
 									 'main main main main'
 									 'looter looter footer footer';
 				align-items: center;
@@ -47,22 +49,37 @@
 				user-select:none;
 				background: black;
 			}
+			.topka{
+				grid-area: topka;
+				width: 30%;
+				height: 100%;
+				color: #a7a7a7;
+				text-align: center;
+				line-height: 8vh;
+				font-size: 5vh;
+				font-weight: bold;
+				/* letter-spacing: 0px; */
+				font-family: 'Khand', sans-serif;
+				background: #8a8a8a1f;
+			}
+			
 			#content{
 				grid-area: header;
-				width: 90%;
-				height : 60%;
+				width: 95%;
+				height: 65%;
 				align-self: center;
 				justify-self: center;
-				color: #ffffffa1;
-				background: #4a4a4a;
+				color: #c1c1c1a1;
+				background: #4a4a4a70;
 				border: none;
-				outline: none; 
-				font-family: 'Mukta', sans-serif;
+				outline: none;
+				/* font-family: 'Rajdhani', sans-serif; */
 				padding: 10px;
-				letter-spacing: 1px;
-				resize:none;
-				overflow-y : scroll;
-				font-size : 1vw;
+				/* letter-spacing: 1px; */
+				resize: none;
+				overflow-y: scroll;
+				font-size: 3vh;
+				align-self : end;
 			}
 			.main{
 				grid-area: main;
@@ -79,7 +96,7 @@
 				user-select: none;
 				font-family: 'Rajdhani', sans-serif;
 				color: #cccccc;
-				font-size : 1.5vw;
+				font-size : 3vh;
 				
 			}
 			
@@ -99,7 +116,7 @@
 			.qualia{
 				grid-row : qualia;
 				font-family: 'Khand',sans-serif;
-				font-size : 2.5vw;
+				font-size : 4vh;
 				color : #b7b7b7;
 				word-spacing: 5px;
 			}
@@ -169,19 +186,21 @@
 			}
 			.chyawanprash{
 				background-color: #2b2b2b;
-				font-size : 1.8vw;
 				margin : 3px;
 				border : none;
 			}
 			@media (orientation: portrait) {
-				.main{font-size : 2vh;}
-				.chyawanprash{font-size:2vh;}
-				#content{font-size : 1.5vh;}
+				.main{font-size:2.5vh;}
+				.topka{font-size:4vh}
+				#content{font-size:2vh}
 			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
+			<div class = "topka">
+				अक्षर ज्ञान
+			</div>
 			<div id= "content" contenteditable ="true">
 				नाभिषेको न संस्कार: सिंहस्य क्रियते मृगैः । 
 				विक्रमार्जितराज्यस्य स्वयमेव मृगेंद्रता ॥ 
@@ -195,7 +214,7 @@
 			
 			<div class="main">
 			</div>
-			<div class="footer">अक्षरित</div>
+			<div class="footer" id="button">अक्षरित</div>
 			<div class="looter">हटाएं</div>
 		</div>
 	</body>
@@ -274,7 +293,7 @@
 			pew = pew.split("|").filter(Boolean);
 			return pew; 
 		}
-		main.innerHTML = "<br><br><br><br>नमस्कार<br><br>❁ ❁ ❁ ❁<br><br>यह छन्द शास्त्र पर आधारित एक साधारण यन्त्र है<br> ऊपर के कोष में सुविधानुसार कितने भी श्लोक लिख या पेस्ट कर सकते है <br> कोष के भरने के बाद आप अक्षरित दबाये, यह आपको एक एक करके सभी श्लोकों के अक्षरों का विवरण देगा <br> श्लोकों को अर्ध विराम ( | ) और पूर्ण विराम ( || ) के मानक के अनुसार ही लिखें <br> यह सुविधा सिर्फ देवनागरी में है, शीघ्र और भाषाएँ भी सम्मिलित होंगी <br> कोष को खाली करने के लिए हटाएं दबाएं <br><br> Add to Home Screen or Landscape mode for best mobile use <br><br>❁ ❁ ❁ ❁ ";
+		main.innerHTML = "<br><br>नमस्कार<br>❁ ❁ ❁ ❁<br>यह छन्द शास्त्र पर आधारित एक साधारण यन्त्र है |<br> ऊपर के कोष में सुविधानुसार कितने भी श्लोक लिख या पेस्ट कर सकते है |<br> कोष के भरने के बाद आप अक्षरित बटन दबाये, यह आपको सभी श्लोकों के अक्षरों का विवरण देगा |<br> श्लोकों को अर्ध विराम ( | ) और पूर्ण विराम ( || ) के मानक के अनुसार ही लिखें <br> यह सुविधा सिर्फ देवनागरी में है, शीघ्र और भाषाएँ भी सम्मिलित होंगी <br> कोष को खाली करने के लिए हटाएं दबाएं <br><br> Add to Home Screen or Landscape mode for best mobile use <br><br>❁ ❁ ❁ ❁ ";
 		let p = 0;
 		let footer = document.getElementsByClassName('footer')[0];
 		footer.onclick = function (){
@@ -293,14 +312,17 @@
 		
 		document.getElementById("content").addEventListener("input", function() {
 			p = 0;
+			 document.getElementById("button").innerHTML = "अक्षरित";
 		}, false);
 		
 		let convert = (n) =>{ 
 		let arr = document.getElementById('content').innerText;
 		arr = preprocessing(arr);
 		
-		if(n > arr[0].length-1) main.innerHTML = "<br><br><br><br>श्लोक समाप्त हुए | ऊपर दिए गए श्लोक-कोष में नए श्लोक डाल कर अध्ययन करें | <br><br>❁ ❁ ❁ ❁"; 
-		else if(n == arr[0].length-1) p = 0;
+		document.getElementById("button").innerHTML = "अगला";
+		
+		if(n > arr[0].length-1) { main.innerHTML = "<br><br><br><br>श्लोक समाप्त हुए | ऊपर दिए गए श्लोक-कोष में नए श्लोक डाल कर अध्ययन करें | <br><br>❁ ❁ ❁ ❁"; document.getElementById("button").innerHTML = "श्लोक समाप्त"; }
+		else if(n == arr[0].length-1) { p = 0; document.getElementById("button").innerHTML = "श्लोक समाप्त";}
 			
 		let verse = document.createElement('div');
 			verse.className = "verseBox flex-container";
