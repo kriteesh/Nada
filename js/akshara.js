@@ -64,5 +64,3 @@ const akshara = lang => shabda => {
 			pew = pew.split("|").filter(Boolean);
 			return pew; 
 		}
-
-export default akshara
