@@ -32,7 +32,7 @@
 				margin:0;
 				width : 100%;
 				height : 100%;
-				overflow-x:hidden;
+				overflow : hidden;
 			}
 			.container{
 				width: 100%;
@@ -66,7 +66,7 @@
 			#content{
 				grid-area: header;
 				width: 95%;
-				height: 65%;
+				height: 70%;
 				align-self: center;
 				justify-self: center;
 				color: #c1c1c1a1;
@@ -74,7 +74,7 @@
 				border: none;
 				outline: none;
 				/* font-family: 'Rajdhani', sans-serif; */
-				padding: 10px;
+				padding: 5px;
 				/* letter-spacing: 1px; */
 				resize: none;
 				overflow-y: scroll;
@@ -118,7 +118,8 @@
 				font-family: 'Khand',sans-serif;
 				font-size : 4vh;
 				color : #b7b7b7;
-				word-spacing: 5px;
+				word-spacing: 3px;
+				padding : 3px;
 			}
 			.footer{
 				grid-area: footer;
@@ -190,9 +191,11 @@
 				border : none;
 			}
 			@media (orientation: portrait) {
+				
 				.main{font-size:2.5vh;}
 				.topka{font-size:4vh}
 				#content{font-size:2vh}
+				html,body{overflow-y: auto;}
 			}
 		</style>
 	</head>
