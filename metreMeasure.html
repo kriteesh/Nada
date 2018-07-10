@@ -1,0 +1,381 @@
+<html>
+	<head>
+		<title>Sanskrit Syllable Calculator</title>
+		<meta http-equiv="Content-Language" content="hi">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="manifest" href="js/manifest.json">
+		<meta name="viewport" content="width=device-width">
+		<meta name="mobile-web-app-capable" content="yes">
+		<link rel="icon" sizes="210x175" href="assets/icon.png">
+		<link href="https://fonts.googleapis.com/css?family=Rajdhani|Khand|Mukta" rel="stylesheet">
+		<script type="text/javascript" src="js/transliterate.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<style>
+			::-webkit-scrollbar {
+    			width: 7px;
+				}
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: white; 
+			}
+
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+				background: grey; 
+			}
+
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: #b7b7b7; 
+}
+			html,body{
+				margin:0;
+				width : 100%;
+				height : 100%;
+			}
+			.container{
+				width: 100%;
+				height : 100%;
+				display: grid;
+				grid-template-rows: 20vh 70vh 10vh;
+				grid-template-columns: 25vw 25vw 30vw 20vw;
+				grid-template-areas: 'header header header header'
+									 'main main main main'
+									 'looter looter footer footer';
+				align-items: center;
+				justify-items : center;
+				user-select:none;
+				background: black;
+			}
+			#content{
+				grid-area: header;
+				width: 80%;
+				height : 80%;
+				align-self: center;
+				justify-self: center;
+				color: #ffffffa1;
+				background: #4a4a4a;
+				border: none;
+				outline: none; 
+				font-family: 'Mukta', sans-serif;
+				padding: 10px;
+				letter-spacing: 1px;
+				resize:none;
+				overflow-y : scroll;	
+			}
+			.main{
+				grid-area: main;
+				display: grid;
+				grid-template-rows: repeat(5,1fr);
+				grid-auto-flow: column;
+				grid-template-areas: 'verse' 'line' 'word' 'letter' 'qualia';
+				font-size: 1.5vw;
+				background-color: #000000f2;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				outline: none;
+				align-items: center;
+				user-select: none;
+				font-family: 'Rajdhani', sans-serif;
+				color: #cccccc;
+				
+			}
+			
+			.verseBox{
+				grid-area: verse;
+			}
+			.lineBox{
+				grid-area : line;
+			}
+			.wordBox{
+				grid-area : word;
+			}
+			.letterBox{
+				grid-area : letter;
+			}
+			.qualia{
+				grid-row : qualia;
+				font-family: 'Khand',sans-serif;
+				font-size : 2.5vw;
+				color : #b7b7b7;
+				word-spacing: 5px;
+			}
+			.footer{
+				grid-area: footer;
+				width: 100%;
+				height: 100%;
+				font-size: auto;
+				text-align: center;
+				background: #6e6f6b;
+				color: #e4e4e4;
+				user-select: none;
+				cursor: pointer;
+				font-size: 5vh;
+				/* align-self: center; */
+				line-height: 10vh;
+				font-family: 'Khand', sans-serif;
+			}
+			.footer:hover{
+					opacity : 0.7;
+			}
+			.footer:active{
+				opacity : 0.7;
+			}
+			.looter{
+				grid-area:looter;
+				background : #cccccc;
+				cursor : pointer;
+				width: 100%;
+				height: 100%;
+				font-size: auto;
+				text-align: center;
+				color: #020202c7;
+				user-select: none;
+				cursor: pointer;
+				font-size: 5vh;
+				/* align-self: center; */
+				line-height: 10vh;
+				font-family: 'Khand', sans-serif;
+			}
+			.looter:active{
+				opacity : 0.7;
+			}
+			.looter:hover{
+				opacity : 0.7;
+			}
+			
+			.flex-container {
+  				display: flex;
+  				flex-direction: row;
+				justify-content: center;
+				flex-wrap:wrap;
+			}
+			.dabba {
+				
+				border-bottom : 1px dashed #cccccc;
+				width: auto;
+				height: auto;
+				margin: 5px;
+				padding: 1px;
+				padding-left: 3px;
+				padding-right: 3px;
+				text-align: center;
+				/* border-radius: 6px; */
+				/* line-height: 75px; */
+				color: #b7b7b7;
+			}
+			.chyawanprash{
+				background-color: #2b2b2b;
+				font-size : 1.8vw;
+				margin : 3px;
+				border : none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div id= "content" contenteditable ="true">
+				नाभिषेको न संस्कार: सिंहस्य क्रियते मृगैः । 
+				विक्रमार्जितराज्यस्य स्वयमेव मृगेंद्रता ॥ 
+				अ॒ग्निमी॑ळे पु॒रोहि॑तं य॒ज्ञस्य॑ दे॒वमृ॒त्विजं॑ । होता॑रं रत्न॒धात॑मं ॥
+				पृथिव्यां त्रीणि रत्नानि जलमन्नं सुभाषितम् । 
+				मूढै: पाषाणखण्डेषु रत्नसंज्ञा प्रदीयते ॥ 
+				पातितोऽपि कराघातै-रुत्पतत्येव कन्दुकः।
+				प्रायेण साधुवृत्तानाम-स्थायिन्यो विपत्तयः॥
+				सद्भिः पुरस्तादभिपूजितः स्यात् सद्भिस्तथा पृष्ठतो रक्षितः स्यात् । 
+				सदासतामतिवादांस्तितिक्षेत् सतां वृत्तं चाददीतार्यवृत्तः ॥</div>
+			
+			<div class="main">
+			</div>
+			<div class="footer">अक्षरित</div>
+			<div class="looter">हटाएं</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+
+		let main = document.getElementsByClassName('main')[0];
+		
+		let preprocessing = sukta => {
+			sukta = sukta.replace(/↵/g," ");
+			sukta = sukta.replace(/[१२३४५६७८९०]/g,"");
+			sukta = sukta.replace(/[1234567890qwertyuiopasdfghjklzxcvbnm,.()*&^%$#@!<>:]/g,"");
+			sukta = sukta.replace(/\"/g,"");
+			sukta = sukta.replace(/\'/g,"");
+			sukta = sukta.replace(/;/g," ");
+			sukta = sukta.replace(/॥/g,"||");
+			sukta = sukta.replace(/।/g,"|");
+			
+			let shloka = sukta.split("||").filter(x=>x!="");
+			let pankti = shloka.map(x=>x.split("|")).filter(x=>x!="");
+			let shabda = pankti.map(x=>x.map(x=>x.split(" ").filter(x=>x!="")));
+			let nada = shabda.map(x=>x.map(x=>x.map(x=>akshara("sanskrit")(x))));
+			return [shloka,pankti,shabda,nada];
+			
+		}
+		
+//			shabda = shabda.map(x=>x.map(x=>x.map(x=>akshara("hindi")(x))));
+			
+		
+		let akshara = lang => shabda => {
+			var verse = shabda; 
+			var res = ""; 
+			var pew = "";
+			var re;
+			if(lang=="sanskrit")
+			  re = /[ क ख ग घ ङ च छ ज झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह अ आ इ ई उ ऊ ऋ ॠ ॡ ए ऐ ओ औ ऌ ळ ](?!्)/g ;
+			else if(lang=="hindi")
+				{
+					re = /[ क ख ग घ ङ च छ ज झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह अ आ इ ई उ ऊ ऋ ॠ ॡ ए ऐ ओ औ ऌ ळ ](?!्)/g ;
+					let jam = verse.slice(-1);
+					if(re.exec(jam)!=null)
+						{
+							verse  = verse + "्";
+						}
+
+				}
+			else if(lang=="tamil")
+			  re = /[அ ஆ இ ஈ உ ஊ எ ஏ ஐ ஒ ஓ ஔ க ங ச ஜ ஞ ட ண த ந ன ப ம ய ர ற ல ள ழ வ ஶ ஷ ஸ ஹ](?!ப்)/g;
+			else if(lang=="gujarati")
+			  re = /[અ આ ઇ ઈ ઉ ઊ ઋ ઌ ઍ એ ઐ ઑ ઓ ઔ ક ખ ગ ઘ ઙ ચ છ જ ઝ ઞ ટ ઠ ડ ઢ ણ ત થ દ ધ ન પ ફ બ ભ મ ય ર લ ળ વ શ ષ સ હ ૠ ૡ](?!\u0acd)/g;
+			do {
+				m = re.exec(verse);
+				if (m) {
+					res = res + m.index + "," ;
+				}
+			} while (m);
+
+			res = res.split(",").filter(Boolean);
+			res[0] ="0";
+			verse = verse.split("");
+			for(var i=0; i<=res.length-1;i++)
+			{ 
+				if(i==res.length-1)
+				{ 
+					for(var k=parseInt(res[res.length-1]); k<= verse.length-1; k++)
+					{
+						pew = pew + verse[k]; 
+					}
+				}
+
+				for(var j=parseInt(res[i]);j<=parseInt(res[i+1])-1;j++)
+				{
+					pew = pew + verse[j];
+				}
+				pew = pew + "|"; 
+			}
+
+			pew = pew.split("|").filter(Boolean);
+			return pew; 
+		}
+		main.innerHTML = "<br><br><br><br>नमस्कार<br><br>❁ ❁ ❁ ❁<br><br>यह छन्द शास्त्र पर आधारित एक साधारण यन्त्र है<br> ऊपर के कोष में आप सुविधा अनुसार कितने भी श्लोक लिख या पेस्ट कर सकते है <br> कोष के भरने के बाद आप अक्षरित दबाये, यह आपको एक एक करके सभी श्लोकों के अक्षरों का विवरण देगा <br> श्लोकों को अर्ध विराम ( | ) और पूर्ण विराम ( || ) के मानक के अनुसार ही लिखें <br> यह सुविधा सिर्फ देवनागरी में है, शीघ्र और भाषाएँ भी सम्मिलित होंगी <br> कोष को खाली करने के लिए हटाएं दबाएं <br><br>❁ ❁ ❁ ❁ ";
+		let p = 0;
+		let footer = document.getElementsByClassName('footer')[0];
+		footer.onclick = function (){
+			main.innerHTML ='';
+			convert(p);
+			p++;
+			
+		}
+		
+		let looter = document.getElementsByClassName('looter')[0];
+		looter.onclick = function (){
+			document.getElementById('content').innerHTML ='';
+			main.innerHTML = '<br><br><br><br>आपने ऊपर के कोष से श्लोक हटा दिए है , अक्षर अध्ययन करने के लिए कोष में पुनः श्लोक डालें |<br><br>❁ ❁ ❁ ❁';
+			p=0;
+		}
+		
+		document.getElementById("content").addEventListener("input", function() {
+			p = 0;
+		}, false);
+		
+		let convert = (n) =>{ 
+		let arr = document.getElementById('content').innerText;
+		arr = preprocessing(arr);
+		
+		if(n > arr[0].length-1) main.innerHTML = "<br><br><br><br>श्लोक समाप्त हुए | ऊपर दिए गए श्लोक-कोष में नए श्लोक डाल कर अध्ययन करें | <br><br>❁ ❁ ❁ ❁"; 
+		else if(n == arr[0].length-1) p = 0;
+			
+		let verse = document.createElement('div');
+			verse.className = "verseBox flex-container";
+			verse.innerHTML = "❁   " + arr[0][n] + "   ❁";
+		
+		let line = document.createElement('div');
+			line.className = "lineBox flex-container";
+			let lines = arr[1][n].join()
+			lines = lines.split(",")
+			lines.map(x=>createFlex(line)('dabba')(x)); 
+		
+		let word = document.createElement('div');
+			word.className = "wordBox flex-container";
+			let words = arr[2][n].join()
+			words = words.split(",")
+			words.map(x=>createFlex(word)('dabba')(x)); 
+		
+		let letter = document.createElement('div');
+			letter.className = "letterBox flex-container";
+			let letters = arr[3][n].join()
+			letters = letters.split(",")
+			letters.map(x=>createFlex(letter)('dabba chyawanprash')(x));
+			
+		let qualia = document.createElement('div');
+			qualia.className = "qualia";
+			let syllables = arr[3][n].join().split(",")
+			qualia.innerHTML = check(syllables)
+			
+			
+		main.appendChild(qualia);
+		main.appendChild(letter);
+		main.appendChild(word);
+		main.appendChild(line);
+		main.appendChild(verse);
+
+		} 
+		
+		let createFlex = parent => className => content => {let p = document.createElement('div'); p.className = className ; p.innerHTML = content ; parent.appendChild(p);}
+		
+		let check = arr => {
+			let chhandArr = [["गायत्री",24],["उष्णिह",28],["अनुष्टुभ",32],["बृहती",36],["पंक्ति",40],["त्रिष्टुभ",44],["जगती",48], ["मंदाक्रांता",68]];
+			let jina ='';
+			for(i=0;i<=chhandArr.length-1;i++)
+				{
+					if(chhandArr[i][1]==arr.length)
+						jina = chhandArr[i][0];
+					else jina = "अज्ञात";
+				}
+			if(arr.length < 16) return "यह श्लोक या तो अधूरा है या फिर यह श्लोक नहीं है , इसमें कुल " + arr.length + " अक्षर हैं";
+			
+			else return "इस श्लोक में कुल " + + arr.length + " अक्षर हैं, " + "यह " + jina +  " छंद में लिखा गया है";
+			 
+		}
+		//sample Text//
+		
+//		वैशम्पायन उवाच|| ततोऽब्रवीन्मयः पार्थं वासुदेवस्य संनिधौ | प्राञ्जलिः श्लक्ष्णया वाचा पूजयित्वा पुनः पुनः ||१|| अस्माच्च कृष्णात्सङ्क्रुद्धात्पावकाच्च दिधक्षतः | त्वया त्रातोऽस्मि कौन्तेय ब्रूहि किं करवाणि ते ||२|| अर्जुन उवाच|| कृतमेव त्वया सर्वं स्वस्ति गच्छ महासुर | प्रीतिमान्भव मे नित्यं प्रीतिमन्तो वयं च ते ||३|| मय उवाच|| युक्तमेतत्त्वयि विभो यथात्थ पुरुषर्षभ | प्रीतिपूर्वमहं किञ्चित्कर्तुमिच्छामि भारत ||४|| अहं हि विश्वकर्मा वै दानवानां महाकविः | सोऽहं वै त्वत्कृते किञ्चित्कर्तुमिच्छामि पाण्डव ||५|| "इस श्लोक में कुल" +  "अक्षर हैं | प्रत्येक पंक्ति में " + "अक्षर हैं | यह" + "छंद में लिखा गया है |"
+			
+	
+		
+	</script>
+	 <script type="text/javascript">
+			// Load the Google Transliterate API
+			google.load("elements", "1", {
+				packages: "transliteration"
+			});
+			function onLoad() {
+				var options = {
+					sourceLanguage: google.elements.transliteration.LanguageCode.ENGLISH,
+					destinationLanguage: [google.elements.transliteration.LanguageCode.HINDI],
+					shortcutKey: 'ctrl+g',
+					transliterationEnabled: true
+				};
+				// Create an instance on TransliterationControl with the required
+				// options.
+				var control =
+					new google.elements.transliteration.TransliterationControl(options);
+				// Enable transliteration in the textbox with id
+				// 'transliterateTextarea'.
+				control.makeTransliteratable(['content']);
+			}
+			google.setOnLoadCallback(onLoad);
+		</script>
+
+</html>
