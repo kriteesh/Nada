@@ -343,12 +343,14 @@
 		let check = arr => {
 			let chhandArr = [["गायत्री",24],["उष्णिह",28],["अनुष्टुभ",32],["बृहती",36],["पंक्ति",40],["त्रिष्टुभ",44],["जगती",48], ["मंदाक्रांता",68]];
 			let jina ='';
+			let temple = 0;
 			for(i=0;i<=chhandArr.length-1;i++)
 				{
-					if(chhandArr[i][1]==arr.length)
-						jina = chhandArr[i][0];
-					else jina = "अज्ञात";
+					if(chhandArr[i][1]==arr.length) { jina = chhandArr[i][0]; temple = 1;}
+				
 				}
+			if(temple==0) jina = "अज्ञात";
+			
 			if(arr.length < 16) return "यह श्लोक या तो अधूरा है या फिर यह श्लोक नहीं है , इसमें कुल " + arr.length + " अक्षर हैं";
 			
 			else return "इस श्लोक में कुल " + + arr.length + " अक्षर हैं, " + "यह " + jina +  " छंद में लिखा गया है";
