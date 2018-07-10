@@ -1,0 +1,211 @@
+<html>
+
+<head>
+
+<meta http-equiv="Content-Language" content="hi">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+  #links{
+
+        position:absolute; 
+        left : 800px;
+        background:#e75903;
+        width: 200px; 
+
+        z-index: 1;
+        padding :10px; 
+        text-align:center;
+        cursor:pointer;
+        border-radius: 4px;
+        color :white;
+        outline:none;
+
+        }
+        #links:hover{
+        background: #727265;
+        color: black;
+        }
+
+#verse1{
+	position:absolute;
+	width: 400px;
+	padding : 10px;
+	border-radius: 5px;
+	outline:none;
+
+
+}
+
+
+        #Submit{
+
+        position:absolute; 
+        left : 500px;
+        background:#9ec956;
+        width: 200px; 
+        color:white;
+        z-index: 1;
+        padding :10px; 
+        text-align:center;
+        cursor:pointer;
+        border-radius: 4px;
+
+        outline:none;
+
+        }
+        #Submit:hover{
+        background: #727265;
+        color: black;
+        }
+        #allJoins{
+        
+        	color: black;
+        	font-size : 16px;
+        	width : auto;
+        	border-radius: 10px;
+        	padding :10px;
+        	position: absolute;
+        	top:100px;
+
+        }
+</style>
+	<title>Sanskrit Syllable Calculator</title>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="allJoins"></div>
+</body>
+<script type="text/javascript">
+
+//var verse = "त्र्य॑र्य॒मा मनु॑षो दे॒वता॑ता॒ त्री रो॑च॒ना दि॒व्या धा॑रयन्त। अर्च॑न्ति त्वा म॒रुत॑ पू॒तद॑क्षा॒स्त्वमे॑षा॒मृषि॑रिन्द्रासि॒ धीर॑॥";
+function syllabify(){
+	var verse;
+	var temp=0;
+	var temp1=0;
+	var temp2=0;
+	var temp3=0;
+	var temp4=0;
+	
+var verseBig = $("#verse1").val();
+// verseBig = verseBig.replace(/[१७३०४६५८९२](?![||]/g,"");
+verseBig = verseBig.replace(/[॒॑१७३०४६५८९२.]/g,"");
+verseBig = verseBig.split("|");
+verseBig = verseBig.filter(Boolean);
+//console.log(verseBig);
+for (var q = verseBig.length - 1; q >= 0; q--) {
+	verse  = verseBig[q];
+	verse = verse.split(" ");
+for (var p = verse.length - 1; p >= 0; p--) {
+	verse[p] = verse[p].replace(/[।॥॒॑१७३०४६५८९२.।॥]/g,"");
+};
+
+
+
+var re = /[ क ख ग घ ङ च छ ज झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह अ आ इ ई उ ऊ ऋ ॠ ॡ ए ऐ ओ औ ऌ ळ ](?!्)/g ;  
+var i=0;
+var b=[];
+var c =["~"];
+var d ;
+
+for(j=0; j<verse.length;j++){
+
+while ((match = re.exec(verse[j])) != null) {
+    b[i] = match.index ;
+   
+  
+
+   
+i++;}
+
+	
+
+for (var k = 0; k <= verse[j].length-1; k++) { 
+	////console.log(b);
+	
+for (var m = b.length - 1; m >= 0; m--) {
+
+ if(k==b[m])
+	{
+		c = c + "~" ;
+
+}
+};
+
+	
+	
+	c = c + verse[j][k]; 
+//
+////console.log(c);
+}
+//c= c + "#";
+ 
+b=[];
+ //c=[];
+
+
+}
+
+
+c = c.split("~");
+// var obj = { };
+// for (var i = 0, j = c.length; i < j; i++) {
+//    if (obj[c[i]]) {
+//       obj[c[i]]++;
+//    }
+//    else {
+//       obj[c[i]] = 1;
+//    } 
+// }
+// //console.log(JSON.stringify(obj));
+
+$("#allJoins").append("The syllables are " + c + "<br><br>" + "No. of syllables in this line are :" + (c.length-2) +  " .<br><br>") ;
+if((c.length-2)==24)
+{
+	$("#allJoins").append("The meter is Gayatri <br>" + "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;<br><br>");
+}
+else if((c.length-2)==32)
+{
+	$("#allJoins").append("The meter is Anushtubh <br>"+ "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot; <br><br>");
+}
+else if((c.length-2)==44)
+{
+	$("#allJoins").append("The meter is Tristubh<br>"+ "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot; <br><br>");
+}
+else if((c.length-2)==40)
+{
+	$("#allJoins").append("The meter is Pankti<br>"+ "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot; <br><br>");
+}
+else if((c.length-2)==48)
+{
+	$("#allJoins").append("The meter is Jagati<br>"+ "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot; <br><br>");
+}
+else if((c.length-2)==28)
+{
+	$("#allJoins").append("The meter is Ushnih<br>"+ "&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot; <br><br>");
+}
+else temp3++;
+}
+console.log(temp+"---"+temp1+"---"+temp2+"---"+temp3);
+
+// var obj2 = { };
+// for (var i = 0, j = d.length; i < j; i++) {
+//    if (obj2[d[i]]) {
+//       obj2[d[i]]++;
+//    }
+//    else {
+//       obj2[d[i]] = 1;
+//    } 
+// }
+// //console.log(JSON.stringify(obj2));
+};
+
+
+
+
+</script>
+<input id="verse1" placeholder="enter verse here"></input>
+<div id="Submit" onclick="syllabify()">Show me the stuff</div>
+<div id="links" onclick="window.location='http://www.aurobindo.ru/workings/matherials/rigveda/01/01-001.htm';">Click here for verses</div>
+
+</body>
+</html>
