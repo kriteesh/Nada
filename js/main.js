@@ -18,7 +18,7 @@ let preprocessing = sukta => {
 			
 }
 		
-main.innerHTML = "<br><br>नमस्कार<br>❁ ❁ ❁ ❁<br>यह छन्द शास्त्र पर आधारित एक साधारण यन्त्र है |<br> ऊपर के कोष में सुविधानुसार कितने भी श्लोक लिख या पेस्ट कर सकते है |<br> कोष के भरने के बाद आप अक्षरित बटन दबाये, यह आपको सभी श्लोकों के अक्षरों का विवरण देगा |<br> श्लोकों को अर्ध विराम ( | ) और पूर्ण विराम ( || ) के मानक के अनुसार ही लिखें <br> यह सुविधा सिर्फ देवनागरी में है, शीघ्र और भाषाएँ भी सम्मिलित होंगी <br> कोष को खाली करने के लिए हटाएं दबाएं <br><br> Add to Home Screen or Landscape mode for best mobile use <br><br>❁ ❁ ❁ ❁ ";
+main.innerHTML = "<br>नमस्कार<br>❁ ❁ ❁ ❁<br><br>यह छन्दशास्त्र पर आधारित एक साधारण यन्त्र है<br>ऊपर के कोष में कितने भी श्लोक लिखें या पेस्ट करें<br>यन्त्र चलाने के लिए अक्षरित बटन दबाये<br>श्लोकों को अर्ध विराम ( | ) और पूर्ण विराम ( || ) के मानक के अनुसार ही लिखें<br> कोष को खाली करने के लिए हटाएं दबाएं <br><br> Add to Home Screen or Landscape mode for best mobile use <br><br>❁ ❁ ❁ ❁ ";
 
 let p = 0;
 
@@ -42,7 +42,14 @@ document.getElementById("content").addEventListener("input", function() {
 	p = 0;
 	document.getElementById("button").innerHTML = "अक्षरित";
 }, false);
-		
+
+document.querySelector('div[contenteditable="true"]').addEventListener("paste", function(e) {
+        e.preventDefault();
+        var text = e.clipboardData.getData("text/plain");
+        document.execCommand("insertHTML", false, text);
+    });
+
+
 let convert = (n) =>{ 
 	let arr = document.getElementById('content').innerText;
 	arr = preprocessing(arr);
@@ -91,7 +98,7 @@ let convert = (n) =>{
 let createFlex = parent => className => content => {let p = document.createElement('div'); p.className = className ; p.innerHTML = content ; parent.appendChild(p);}
 		
 let check = arr => {
-	let chhandArr = [["गायत्री",24],["उष्णिह",28],["अनुष्टुभ",32],["बृहती",36],["पंक्ति",40],["त्रिष्टुभ",44],["जगती",48], ["मंदाक्रांता",68]];
+	let chhandArr = [["गायत्री",24],["उष्णिह",28],["अनुष्टुभ",32],["बृहती",36],["पंक्ति",40],["त्रिष्टुभ",44],["जगती",48], ["मंदाक्रांता",68],["मालिनी",30]];
 	let jina ='';
 	let temple = 0;
 	for(i=0;i<=chhandArr.length-1;i++)
