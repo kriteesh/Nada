@@ -38,10 +38,28 @@ looter.onclick = function (){
 	p=0;
 }
 		
-document.getElementById("content").addEventListener("input", function() {
-	p = 0;
+$("#content").click(function(){
+    p = 0;
 	document.getElementById("button").innerHTML = "अक्षरित";
-}, false);
+	if ($(window).height() < 400)
+		{
+	$(".container").css("grid-template-rows","10vh 35vh 35vh 20vh");
+	$("#content").css("font-size","5vh");
+	$(".footer").css("font-size","8vh");
+	$(".looter").css("font-size","8vh");
+	$(".footer").css("line-height","20vh");
+	$(".looter").css("line-height","20vh");
+		}
+});
+
+$("#content").blur(function(){
+    $(".container").css("grid-template-rows","8vh 16vh 68vh 8vh");
+	$("#content").css("font-size", "3vh");
+	$(".footer").css("font-size","4vh");
+	$(".looter").css("font-size","4vh");
+	$(".footer").css("line-height","8vh");
+	$(".looter").css("line-height","8vh");
+});
 
 document.querySelector('div[contenteditable="true"]').addEventListener("paste", function(e) {
         e.preventDefault();

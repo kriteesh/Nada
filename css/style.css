@@ -61,7 +61,8 @@
 				border: none;
 				outline: none;
 				/* font-family: 'Rajdhani', sans-serif; */
-				padding: 5px;
+				padding-left : 1vw;
+				padding-right: 1vw;
 				/* letter-spacing: 1px; */
 				resize: none;
 				overflow-y: scroll;
@@ -120,7 +121,7 @@
 				cursor: pointer;
 				font-size: 5vh;
 				/* align-self: center; */
-				line-height: 10vh;
+				line-height: 8vh;
 				font-family: 'Khand', sans-serif;
 			}
 			.footer:hover{
@@ -142,7 +143,7 @@
 				cursor: pointer;
 				font-size: 5vh;
 				/* align-self: center; */
-				line-height: 10vh;
+				line-height: 8vh;
 				font-family: 'Khand', sans-serif;
 			}
 			.looter:active{
