@@ -5,5 +5,12 @@
   "background_color": "#000000",
   "display": "standalone",
   "orientation": "landscape",
-  "start_url": "kriteesh.github.io/Nada/metreMeasure.html"
+  "start_url": "kriteesh.github.io/Nada/metreMeasure.html",
+	"icons": [
+    {
+      "src": "assets/akshara.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
 }
