@@ -18,7 +18,7 @@ let preprocessing = sukta => {
 			
 }
 		
-main.innerHTML = "<br>नमस्कार<br>❁ ❁ ❁ ❁<br><br>यह छन्दशास्त्र पर आधारित एक साधारण यन्त्र है<br>ऊपर के कोष में कितने भी श्लोक लिखें या पेस्ट करें<br>यन्त्र चलाने के लिए अक्षरित बटन दबाये<br>श्लोकों को अर्ध विराम ( | ) और पूर्ण विराम ( || ) के मानक के अनुसार ही लिखें<br> कोष को खाली करने के लिए हटाएं दबाएं <br><br> Add to Home Screen or Landscape mode for best mobile use <br><br>❁ ❁ ❁ ❁ ";
+main.innerHTML = "<br>नमस्कार<br>❁ ❁ ❁ ❁<br><br>यह छन्दशास्त्र पर आधारित एक साधारण यन्त्र है<br>ऊपर के कोष में कितने भी श्लोक लिखें या पेस्ट करें<br>यन्त्र चलाने के लिए अक्षरित बटन दबाये<br>श्लोकों को अर्ध विराम ( | ) और पूर्ण विराम ( || ) के मानक के अनुसार ही लिखें<br> कोष को खाली करने के लिए हटाएं दबाएं <br><br>❁ ❁ ❁ ❁ ";
 
 let p = 0;
 
@@ -43,17 +43,23 @@ $("#content").click(function(){
 	document.getElementById("button").innerHTML = "अक्षरित";
 	if ($(window).height() < 400)
 		{
-	$(".container").css("grid-template-rows","10vh 35vh 35vh 20vh");
+	$(".container").css("grid-template-rows","20vh 50vh 5vh 25vh");
+	$(".topka").css("line-height","20vh");
+	$("#content").css("align","center");
+	$("#content").css("height","90%");
 	$("#content").css("font-size","5vh");
 	$(".footer").css("font-size","8vh");
 	$(".looter").css("font-size","8vh");
-	$(".footer").css("line-height","20vh");
-	$(".looter").css("line-height","20vh");
+	$(".footer").css("line-height","25vh");
+	$(".looter").css("line-height","25vh");
 		}
 });
 
 $("#content").blur(function(){
     $(".container").css("grid-template-rows","8vh 16vh 68vh 8vh");
+	$(".topka").css("line-height","8vh")		
+	$("#content").css("align","end");
+	$("#content").css("height","70%");
 	$("#content").css("font-size", "3vh");
 	$(".footer").css("font-size","4vh");
 	$(".looter").css("font-size","4vh");
