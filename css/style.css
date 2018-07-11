@@ -184,3 +184,6 @@
 				#content{font-size:2vh}
 				html,body{overflow-y: auto;}
 			}
+			@media (orientation: landscape) {
+				html,body{overflow-x: auto;}
+			}

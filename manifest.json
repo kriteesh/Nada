@@ -1,0 +1,9 @@
+{
+"short_name": "अक्षर",
+  "name": "अक्षर ज्ञान",
+  "theme_color": "#cccccc",
+  "background_color": "#000000",
+  "display": "standalone",
+  "orientation": "landscape",
+  "start_url": "kriteesh.github.io/Nada/metreMeasure.html"
+}
