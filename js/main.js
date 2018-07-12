@@ -3,10 +3,11 @@ let main = document.getElementsByClassName('main')[0];
 let preprocessing = sukta => {
 	sukta = sukta.replace(/↵/g," ");
 	sukta = sukta.replace(/[१२३४५६७८९०]/g,"");
-	sukta = sukta.replace(/[1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM?,.()*&^%$#@!<>:]/g,"");
+	sukta = sukta.replace(/[1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM?,.()*&^%$#@!<>:+_]/g,"");
 	sukta = sukta.replace(/\"/g,"");
 	sukta = sukta.replace(/\'/g,"");
 	sukta = sukta.replace(/;/g," ");
+	sukta = sukta.replace(/-/g," ");
 	sukta = sukta.replace(/॥/g,"||");
 	sukta = sukta.replace(/।/g,"|");
 			
