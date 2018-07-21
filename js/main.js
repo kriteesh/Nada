@@ -147,7 +147,7 @@ google.load("elements", "1", {
 function onLoad() {
 	var options = {
 		sourceLanguage: google.elements.transliteration.LanguageCode.ENGLISH,
-		destinationLanguage: [google.elements.transliteration.LanguageCode.HINDI],
+		destinationLanguage: [google.elements.transliteration.LanguageCode.SANSKRIT],
 		shortcutKey: 'ctrl+g',
 		transliterationEnabled: true
 	};
