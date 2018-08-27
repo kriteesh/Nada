@@ -123,7 +123,6 @@ let convert = (n) =>{
 let createFlex = parent => className => content => {let p = document.createElement('div'); p.className = className ; p.innerHTML = content ; parent.appendChild(p);}
 		
 let check = arr => {
-	let chhandArr = [["गायत्री",24],["उष्णिह",28],["अनुष्टुभ",32],["बृहती",36],["पंक्ति",40],["त्रिष्टुभ",44],["जगती",48], ["मंदाक्रांता",68],["मालिनी",30]];
 	let jina ='';
 	let temple = 0;
 	for(i=0;i<=chhandArr.length-1;i++)

@@ -28,7 +28,7 @@
 				grid-template-rows: 8vh 16vh 68vh 8vh;
 				grid-template-columns: 25vw 25vw 30vw 20vw;
 				grid-template-areas: 'topka topka topka topka'
-									'header header header header'
+									'header header header shredder'
 									 'main main main main'
 									 'looter looter footer footer';
 				align-items: center;
@@ -49,7 +49,30 @@
 				font-family: 'Khand', sans-serif;
 				background: #8a8a8a1f;
 			}
-			
+			#file{
+				grid-area: shredder;
+				display : flex;
+				height : 70%;
+				width : 90%;
+				font-size : 2.5vh;
+				color : white;
+				flex-direction: column;
+				justify-content: space-around;
+				text-align: center;
+				
+			}
+			.mode{
+					background : #151515;
+					border : none;
+					padding : 1vh;
+					font-size : 2.5vh;
+					color : white;
+					font-family: 'Rajdhani', sans-serif;
+
+				}
+			.mode:hover{
+					background : #565656;
+			}
 			#content{
 				grid-area: header;
 				width: 95%;
