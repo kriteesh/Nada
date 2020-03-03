@@ -42,31 +42,10 @@ looter.onclick = function (){
 $("#content").click(function(){
     p = 0;
 	document.getElementById("button").innerHTML = "अक्षरित";
-//	if ($(window).height() < 400)
-//		{
-//	$(".container").css("grid-template-rows","20vh 50vh 5vh 25vh");
-//	$(".topka").css("line-height","20vh");
-//	$("#content").css("align","center");
-//	$("#content").css("height","90%");
-//	$("#content").css("font-size","5vh");
-//	$(".footer").css("font-size","8vh");
-//	$(".looter").css("font-size","8vh");
-//	$(".footer").css("line-height","25vh");
-//	$(".looter").css("line-height","25vh");
-//		}
+
 });
 
-//$("#content").blur(function(){
-//    $(".container").css("grid-template-rows","8vh 16vh 68vh 8vh");
-//	$(".topka").css("line-height","8vh")		
-//	$("#content").css("align","end");
-//	$("#content").css("height","70%");
-//	$("#content").css("font-size", "3vh");
-//	$(".footer").css("font-size","4vh");
-//	$(".looter").css("font-size","4vh");
-//	$(".footer").css("line-height","8vh");
-//	$(".looter").css("line-height","8vh");
-//});
+
 
 document.querySelector('div[contenteditable="true"]').addEventListener("paste", function(e) {
         e.preventDefault();

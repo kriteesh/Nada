@@ -1,7 +1,7 @@
 /**
  * Divides word into its aksharas
  * 
- * @param {string} sanskrit, hindi, gujarati
+ * @param {string} sanskrit, hindi, gujarati.tamil
  * @param {string} actually word (single string without spaces). 
  * @returns {array} all the aksharas making up the word. 
  * @example
@@ -31,7 +31,7 @@ const akshara = lang => shabda => {
 
 				}
 			else if(lang=="tamil")
-			  re = /[அ ஆ இ ஈ உ ஊ எ ஏ ஐ ஒ ஓ ஔ க ங ச ஜ ஞ ட ண த ந ன ப ம ய ர ற ல ள ழ வ ஶ ஷ ஸ ஹ](?!ப்)/g;
+			  re = /[அ ஆ இ ஈ உ ஊ எ ஏ ஐ ஒ ஓ ஔ க ங ச ஜ ஞ ட ண த ந ன ப ம ய ர ற ல ள ழ வ ஶ ஷ ஸ ஹ](?!\u0bcd)/g;
 			else if(lang=="gujarati")
 			  re = /[અ આ ઇ ઈ ઉ ઊ ઋ ઌ ઍ એ ઐ ઑ ઓ ઔ ક ખ ગ ઘ ઙ ચ છ જ ઝ ઞ ટ ઠ ડ ઢ ણ ત થ દ ધ ન પ ફ બ ભ મ ય ર લ ળ વ શ ષ સ હ ૠ ૡ](?!\u0acd)/g;
 			do {
