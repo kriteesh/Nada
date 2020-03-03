@@ -49,30 +49,7 @@ html,body{
 	font-family: 'Khand', sans-serif;
 	background: #8a8a8a1f;
 }
-#file{
-	grid-area: shredder;
-	display : flex;
-	height : 70%;
-	width : 90%;
-	font-size : 2.5vh;
-	color : white;
-	flex-direction: column;
-	justify-content: space-around;
-	text-align: center;
-	
-}
-.mode{
-		background : #151515;
-		border : none;
-		padding : 1vh;
-		font-size : 2.5vh;
-		color : white;
-		font-family: 'Rajdhani', sans-serif;
 
-	}
-.mode:hover{
-		background : #565656;
-}
 #content{
 	grid-area: header;
 	width: 85%;
