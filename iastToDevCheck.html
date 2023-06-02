@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAST to Devanagari</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@500&display=swap');
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        h1{
+            text-align: center;
+            margin: 0;
+            padding: 1rem;
+            background-color: #f1f1f1;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .mainText{
+            width: 80%;
+            margin: 0 auto;
+            height: 70vh;
+            padding: 1rem;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            outline: none;
+            resize: none;
+            overflow: auto;
+            /*fancy border, box-shadow and background for notebook effect*/
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: #fff;
+            font-family : 'Montserrat', sans-serif;
+        }
+
+        .optionHolder{
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .devfyBtn{
+            margin: 5px auto;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-image: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #64ff00, #00ffd5, #001eff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 1800% 1800%;
+            animation: rainbow 18s ease infinite;
+            color: #fff;
+            cursor: pointer;
+            font-family: 'Bangers', cursive;
+            font-size : 30px;
+        }
+        @keyframes rainbow {
+            0%{background-position:0% 82%}
+            50%{background-position:100% 19%}
+            100%{background-position:0% 82%}
+        }
+        .nasalBtn{
+            margin: 5px auto;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-image: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #64ff00, #00ffd5, #001eff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 1800% 1800%;
+            animation: rainbow 18s ease infinite;
+            color: #fff;
+            cursor: pointer;
+            font-family: 'Bangers', cursive;
+            font-size : 30px;
+        }
+    </style>
+</head>
+<body>
+    <!--heading-->
+    <h1>IAST to देvanāगrī</h1>
+    <div class="optionHolder">
+         <!--button for converting-->
+        <button class="devfyBtn">Devanagarify</button>
+        <!--button for nasal correction-->
+        <button class="nasalBtn">Nasalify</button>
+    </div>
+
+    <div class="mainText" contenteditable></div>
+</body>
+<script>
+    const mainText = document.querySelector(".mainText");
+    const devfyBtn = document.querySelector(".devfyBtn");
+    const nasalBtn = document.querySelector(".nasalBtn");
+    //click event listener for button
+    devfyBtn.addEventListener("click",()=>{mainText.innerText = IASTtoDevanagari(mainText.innerText);});
+    
+    //click event listener for nasal button
+    nasalBtn.addEventListener("click",()=>{mainText.innerText = anuNasikaIast(mainText.innerText);});
+
+    const iastToHk = (arr) => arr.replace(/ṅ/g, "G").replace(/ñ/g, "J").replace(/ṭh/g, "Th").replace(/ṭ/g, "T").replace(/ḍh/g, "Dh").replace(/ḍ/g, "D").replace(/ṇ/g, "N").replace(/ś/g, "z").replace(/ṣ/g, "S").replace(/aṃ/g, "aM").replace(/aḥ/g, "aH").replace(/ā/g, "A").replace(/ī/g, "I").replace(/ū/g, "U").replace(/ḹ/g, "lRR").replace(/ṝ/g, "RR").replace(/ḷ/g, "lR").replace(/ṛ/g, "R").replace(/ḥ/g, "H").replace(/[ṃṁ]/g, "M");
+    const hkToDev = (arr) => arr .replace(/kh/g, "ख्").replace(/k/g, "क्") .replace(/gh/g, "घ्") .replace(/g/g, "ग्") .replace(/G/g, "ङ्").replace(/ch/g, "छ्") .replace(/c/g, "च्") .replace(/jh/g, "झ्") .replace(/j/g, "ज्") .replace(/J/g, "ञ्") .replace(/Th/g, "ठ्").replace(/T/g, "ट्") .replace(/Dh/g, "ढ्") .replace(/D/g, "ड्") .replace(/N/g, "ण्") .replace(/th/g, "थ्") .replace(/t/g, "त्") .replace(/dh/g, "ध्").replace(/d/g, "द्") .replace(/n/g, "न्") .replace(/ph/g, "फ्") .replace(/p/g, "प्") .replace(/bh/g, "भ्").replace(/b/g, "ब्") .replace(/m/g, "म्") .replace(/y/g, "य्") .replace(/r/g, "र्") .replace(/l/g, "ल्") .replace(/v/g, "व्") .replace(/z/g, "श्") .replace(/S/g, "ष्") .replace(/s/g, "स्") .replace(/aM/g, "अं") .replace(/aH/g, "अः").replace(/ai/g, "ऐ") .replace(/au/g, "औ").replace(/a/g, "अ") .replace(/A/g, "आ") .replace(/i/g, "इ") .replace(/I/g, "ई") .replace(/u/g, "उ") .replace(/U/g, "ऊ") .replace(/e/g, "ए") .replace(/o/g, "ओ") .replace(/lRR/g, "ॡ") .replace(/RR/g, "ॠ") .replace(/lR/g, "ऌ").replace(/R/g, "ऋ") .replace(/h/g, "ह्").replace(/H/g, "ः").replace(/M/g, "ं").replace(/्अ/g,"").replace(/्आ/g,"ा").replace(/्इ/g,"ि").replace(/्ई/g,"ी").replace(/्उ/g,"ु").replace(/्ऊ/g,"ू").replace(/्ए/g,"े").replace(/्ऐ/g,"ै").replace(/्ओ/g,"ो").replace(/्औ/g,"ौ").replace(/्ऋ/g,"ृ").replace(/्ॠ/g,"ॄ").replace(/्ऌ/g,"ॢ").replace(/्ॡ/g,"ॣ").replace(/्अं/g,"ं").replace(/्अः/g,"ः");
+        
+    //function to convert IAST to Devanagari
+
+    const IASTtoDevanagari = (arr)=>{
+        if(!arr) return;
+        //else if arr is not empty but has no space
+        else if(arr && !arr.includes(" ")){
+            if(arr.match(/[ṅñṇṭḍśṣāīūṛṝḷḹḥṁṃ]/ig)) return hkToDev(anuNasikaHk(iastToHk(arr.toLowerCase())));
+            else return arr;
+        } 
+        else{
+            arr = arr.split(" ");
+            arr = arr.map(x=>x.match(/[ṅñṭḍṇśṣāīūṛṝḷḹḥṁṃ]/ig)?hkToDev(anuNasikaHk(iastToHk(x.toLowerCase()))):x);
+            return arr.join(" ");
+        }
+    }
+    
+    const anuNasikaIast = arr => arr.replace(/[ñṇnṁṃm](?=k|g)/g,'ṅ').replace(/[ṅṇnṁṃm](?=c|j)/g,'ñ').replace(/[ṅñnṁṃm](?=T|D)/g,'ṇ').replace(/[ṅñṇṁṃm](?=t|d)/g,'n').replace(/[ṅñṇnṁṃ](?=p|b)/g,'m');
+
+    const anuNasikaHk = arr => arr.replace(/[JNnmM](?=k|g)/g,'G').replace(/[GNnmM](?=c|j)/g,'J').replace(/[GJnmM](?=T|D)/g,'N').replace(/[GJNmM](?=t|d)/g,'n').replace(/[GJNnM](?=p|b)/g,'m');
+
+
+</script>
+</html>
